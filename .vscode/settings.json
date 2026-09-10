@@ -1,0 +1,33 @@
+{
+    "latex-workshop.latex.build.fromFolder": ".",
+    "latex-workshop.latex.outDir": "%DIR%/.cv-build/%DOCFILE%",
+    "latex-workshop.latex.auxDir": "%OUTDIR%",
+    "latex-workshop.latex.jobname": "CV",
+    "latex-workshop.latex.recipe.default": "first",
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "Build current CV",
+            "tools": [
+                "cv-latexmk"
+            ]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "cv-latexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "-g",
+                "-jobname=CV",
+                "-outdir=%OUTDIR%",
+                "-auxdir=%AUXDIR%",
+                "-out2dir=%DIR%",
+                "%DOC_EXT%"
+            ]
+        }
+    ]
+}

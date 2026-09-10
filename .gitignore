@@ -1,0 +1,15 @@
+# Private CV sources, personal assets, and their latest rendered PDF
+/MyCVs/
+
+# LaTeX build directory used by LaTeX Workshop and latexmk
+/.cv-build/
+/.latex-build/
+
+# Fallback ignores for manual builds that do not use the project configuration
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+photo.*
