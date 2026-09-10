@@ -54,11 +54,6 @@ Builds run from the project root so that every private source can find
 `CV.cls`. Paths to private assets are therefore workspace-relative; for
 example, use `\photo{MyCVs/photo.png}{0.20\linewidth}`.
 
-When creating a public repository, copy only the public tracked files. Do not
-copy `MyCVs/`, `.cv-build/`, `.latex-build/`, or the existing `.git/`
-directory. Git ignore rules protect new commits, but they cannot remove private
-information from an existing repository's history.
-
 ## General usage rules
 
 All CV declarations must appear before `\begin{document}`. The document body is
@@ -84,10 +79,7 @@ Additional rules:
 - Optional keys may be omitted entirely.
 - Commands such as `\educationskill`, `\course`, and `\projectdetail` are child commands. Use them
   only inside the indicated parent key.
-- Descriptions and evidence may wrap naturally across multiple rendered lines.
-- In entries with an institution, company, or other organisation, its name is
-  displayed beneath the entry title on the left, with a small gap before the
-  description.
+- Descriptions and evidence may wrap naturally across multiple rendered lines. Therefore this must be accounted for by visual inspection of the built PDF.
 - Values are ordinary LaTeX text. Escape reserved LaTeX characters when they
   are meant literally, for example `\&`, `\%`, `\_`, `\#`, and `\$`.
 
@@ -144,7 +136,7 @@ Adds a phone number to the contact line.
 
 | Argument | Required | Description |
 | --- | --- | --- |
-| `number` | Yes | The displayed number, preferably including the country code. |
+| `number` | Yes | The displayed number in text format, preferably including the country code. |
 
 The command is optional and repeatable.
 
@@ -213,8 +205,6 @@ column is reserved.
 
 The command itself is optional. Calling it again replaces the previous photo
 and width. The image keeps its aspect ratio.
-The referenced image should be included in source control when it is required
-to build the CV.
 
 ## Education
 
@@ -269,7 +259,7 @@ Adds one skill bullet inside the optional `skills` key of an `\education` entry.
 
 | Argument | Required | Description |
 | --- | --- | --- |
-| `name` | Yes | Concise skill or subject name. |
+| `name` | Yes | Concise skill. |
 | `description` | Yes | Explanation of how the skill was acquired or demonstrated. |
 
 The command may be repeated any number of times. Do not use it at the top level.
@@ -299,7 +289,7 @@ Adds one entry to the **Work Experience** section.
 | `position` | Yes | Position or role name. |
 | `context` | No | Team, department, laboratory, or course. It is displayed after the position. |
 | `start` | Yes | Free-text start date. |
-| `end` | Conditionally | Required for `completed` and `expected`; unnecessary for `ongoing` and `absent`. |
+| `end` | Conditionally | Free-test end date. Required for `completed` and `expected`; unnecessary for `ongoing` and `absent`. |
 | `end-status` | No | `completed` (default) prints `end`; `expected` prints `end (expected)`; `ongoing` prints `Present`; `absent` prints only the start date. No other values are accepted. |
 | `description` | Yes | Brief description of the role and its scope. |
 | `skills` | Yes | One or more `\experienceskill{name}{description}` declarations. |
