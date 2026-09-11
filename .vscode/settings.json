@@ -2,19 +2,19 @@
     "latex-workshop.latex.build.fromFolder": ".",
     "latex-workshop.latex.outDir": "%DIR%/.cv-build/%DOCFILE%",
     "latex-workshop.latex.auxDir": "%OUTDIR%",
-    "latex-workshop.latex.jobname": "CV",
+    "latex-workshop.latex.jobname": "",
     "latex-workshop.latex.recipe.default": "first",
     "latex-workshop.latex.recipes": [
         {
-            "name": "Build current CV",
+            "name": "Build current application document",
             "tools": [
-                "cv-latexmk"
+                "application-latexmk"
             ]
         }
     ],
     "latex-workshop.latex.tools": [
         {
-            "name": "cv-latexmk",
+            "name": "application-latexmk",
             "command": "latexmk",
             "args": [
                 "-synctex=1",
@@ -22,10 +22,8 @@
                 "-file-line-error",
                 "-pdf",
                 "-g",
-                "-jobname=CV",
                 "-outdir=%OUTDIR%",
                 "-auxdir=%AUXDIR%",
-                "-out2dir=%DIR%",
                 "%DOC_EXT%"
             ]
         }

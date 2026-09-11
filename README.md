@@ -1,13 +1,16 @@
-# LaTeX CV
+# LaTeX CV and Cover Letter
 
-This project separates CV data from presentation and includes a privacy-safe,
-fictional example:
+This project provides matching LaTeX application documents with privacy-safe,
+fictional examples:
 
 - `CV.tex` contains fictional example information expressed through semantic
   commands.
 - `CV.cls` validates that information and controls all formatting.
 - `CV.pdf` is the rendered fictional example.
-- `MyCVs/` is a Git-ignored local directory for private and tailored CVs.
+- `CoverLetter.tex` is a self-contained fictional cover-letter template in the
+  same visual style.
+- `CoverLetter.pdf` is the rendered fictional cover-letter example.
+- `MyCVs/` is a Git-ignored local directory for private and tailored documents.
 
 ## Build
 
@@ -17,42 +20,77 @@ command (`Ctrl+Alt+B`). The output location follows the source location:
 | Source | Final PDF |
 | --- | --- |
 | `CV.tex` | `CV.pdf` |
+| `CoverLetter.tex` | `CoverLetter.pdf` |
 | `MyCVs/General.tex` | `MyCVs/CV.pdf` |
 | `MyCVs/Tailored-Role.tex` | `MyCVs/CV.pdf` (replaces the preceding private build) |
+| `MyCVs/Employer-Cover-Letter.tex` | `MyCVs/CoverLetter.pdf` |
 
 Each source has a separate auxiliary directory under `.cv-build/`, so
-switching among tailored CVs does not reuse another source's build state. The
-selected source is rebuilt once even when it has not changed, ensuring that it
-always replaces the shared `MyCVs/CV.pdf`.
+switching among tailored documents does not reuse another source's build state.
+The selected source is rebuilt once even when it has not changed, ensuring that
+it always replaces the corresponding shared PDF in `MyCVs/`.
 
-From a terminal opened in the project root, run either:
+Cover-letter sources are identified by the following marker at the top of the
+file. Keep it when copying or renaming `CoverLetter.tex`:
+
+```latex
+% !CV document = cover-letter
+```
+
+Any source without this marker is treated as a CV. This preserves the existing
+behaviour in which differently named private CV sources all publish `CV.pdf`.
+
+From a terminal opened in the project root, run the document you want:
 
 ```powershell
 latexmk CV.tex
+latexmk CoverLetter.tex
 latexmk MyCVs/Tailored-Role.tex
+latexmk MyCVs/Employer-Cover-Letter.tex
 ```
 
-Both methods use `.latexmkrc`. Every finished document is named `CV.pdf`; a
-private build therefore replaces only `MyCVs/CV.pdf`, never the public example.
+Both Ctrl+Alt+B and terminal builds use `.latexmkrc`. A private build replaces
+only the matching PDF inside `MyCVs/`, never either public example in the
+project root.
 
-### Private CVs and public repositories
+### Private application documents and public repositories
 
 The entire `MyCVs/` directory is ignored by Git. It may contain any number of
-independent `.tex` sources, a private photo, and the most recently rendered
-private `CV.pdf`. For example:
+independent CV and cover-letter sources, private assets, and the most recently
+rendered private PDFs. For example:
 
 ```text
 MyCVs/
 |-- General.tex
 |-- Embedded-Engineer.tex
 |-- FPGA-Engineer.tex
+|-- Employer-Cover-Letter.tex
 |-- photo.png
+|-- CoverLetter.pdf
 `-- CV.pdf
 ```
 
-Builds run from the project root so that every private source can find
-`CV.cls`. Paths to private assets are therefore workspace-relative; for
-example, use `\photo{MyCVs/photo.png}{0.20\linewidth}`.
+Builds run from the project root so that private CV sources can find `CV.cls`
+and document paths resolve consistently. Paths to private assets are therefore
+workspace-relative; for example, use
+`\photo{MyCVs/photo.png}{0.20\linewidth}`.
+
+## Cover letter template
+
+Copy `CoverLetter.tex` into `MyCVs/` to create a private version. The editable
+commands near the top contain the applicant, recipient, date, subject, and
+salutation. Replace the four example paragraphs with text tailored to the
+specific vacancy and employer; do not remove the cover-letter marker on the
+first line.
+
+The structure follows the professional conventions described by
+[AMS Austria](https://www.ams.at/arbeitsuchende/richtig-bewerben/das-bewerbungs--oder-anschreiben)
+and [Europass](https://europass.europa.eu/en/create-europass-cover-letter): an
+A4 page with sender and recipient details, place and date, a precise subject,
+personal salutation, short role-specific paragraphs, formal closing, and an
+optional enclosure line. These are application conventions rather than a
+mandatory Austrian or EU legal format; always follow instructions in the
+vacancy itself.
 
 ## General usage rules
 

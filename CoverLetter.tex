@@ -1,0 +1,119 @@
+% !CV document = cover-letter
+\documentclass[11pt,a4paper]{article}
+
+% This file contains fictional data and is safe to use as a public example.
+% Copy it into MyCVs, keep the document marker above, and replace the example
+% values and body text with information tailored to a specific vacancy.
+
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{lmodern}
+\usepackage[
+  left=22mm,
+  top=18mm,
+  right=22mm,
+  bottom=18mm
+]{geometry}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\definecolor{cvlink}{HTML}{185A8D}
+\definecolor{cvmuted}{HTML}{555555}
+
+\hypersetup{
+  colorlinks=true,
+  urlcolor=cvlink,
+  linkcolor=cvlink,
+  pdftitle={Cover Letter -- Alex Example},
+  pdfauthor={Alex Example}
+}
+\urlstyle{same}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.78em}
+\linespread{1.04}
+
+% Applicant details
+\newcommand{\ApplicantName}{Alex Example}
+\newcommand{\ApplicantHeadline}{Embedded Systems Engineer}
+\newcommand{\ApplicantAddress}{Example Street 12, 1000 Example City, Example Country}
+\newcommand{\ApplicantPhone}{+1 202-555-0147}
+\newcommand{\ApplicantEmail}{alex@example.com}
+
+% Recipient and application details
+\newcommand{\RecipientName}{Dr Morgan Sample}
+\newcommand{\RecipientRole}{Recruiting Lead}
+\newcommand{\RecipientOrganisation}{Example Technology GmbH}
+\newcommand{\RecipientAddress}{Innovation Street 1\\1010 Vienna\\Austria}
+\newcommand{\ApplicationPlace}{Vienna}
+\newcommand{\ApplicationDate}{\today}
+\newcommand{\ApplicationSubject}{Application for Embedded Systems Engineer (Ref. ES-2026-01)}
+\newcommand{\ApplicationSalutation}{Dear Dr Sample,}
+
+\begin{document}
+
+% Identity masthead shared visually with the example CV.
+{\centering
+  {\LARGE\bfseries\MakeUppercase{\ApplicantName}\par}
+  \vspace{0.05em}
+  \ApplicantHeadline\par
+  \vspace{0.12em}
+  {\small
+    \ApplicantAddress
+    \enspace\textcolor{cvmuted}{$\diamond$}\enspace
+    \ApplicantPhone
+    \enspace\textcolor{cvmuted}{$\diamond$}\enspace
+    \href{mailto:\ApplicantEmail}{\ApplicantEmail}\par
+  }
+}
+
+\vspace{0.55em}
+\hrule
+\vspace{1.5em}
+
+\begin{minipage}[t]{0.58\textwidth}
+  \RecipientName\\
+  \RecipientRole\\
+  \textbf{\RecipientOrganisation}\\
+  \RecipientAddress
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.36\textwidth}
+  \raggedleft
+  \ApplicationPlace, \ApplicationDate
+\end{minipage}
+
+\vspace{1.45em}
+{\bfseries\ApplicationSubject\par}
+\vspace{0.25em}
+
+\ApplicationSalutation
+
+I am applying for the Embedded Systems Engineer position at Example Technology
+GmbH. The opportunity to develop dependable embedded products particularly
+appeals to me because it combines digital design, software engineering, and
+careful system-level testing.
+
+My background in embedded hardware and software prototyping has trained me to
+move methodically from requirements to implementation and verification. In
+academic and project work, I have used Embedded C, C++, VHDL, Python, and Linux
+to build resource-conscious systems and document their behaviour clearly.
+
+I am especially interested in your team's focus on reliable engineering and
+collaborative product development. I would contribute structured analysis,
+clear technical communication, and a strong interest in taking designs from
+early prototypes to well-tested solutions.
+
+I would welcome the opportunity to discuss how my experience and motivation
+could support your team. Thank you for considering my application.
+
+Yours sincerely,
+
+\vspace{0.7em}
+\textbf{\ApplicantName}
+
+\vfill
+{\small\textcolor{cvmuted}{Enclosure: Curriculum vitae}}
+
+\end{document}
